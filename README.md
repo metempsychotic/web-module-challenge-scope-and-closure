@@ -42,6 +42,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+closure allows us to put multiple functions together into one function and let us access parent functions even after the parent has been terminated
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +65,20 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+I can tell closure is used in this code because there are multiple functions nested inside a parent
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+Dan's name is always the same, the number he rolled could be different. 
+
+
 c. What is the lexical scope of `newRoll`? 
+the lexical scope is that of the function itself
+
+return function(){
+      // generate random number between 1 and 6
+    const newRoll = Math.floor(Math.random() * 6);
+    console.log(`${name} rolled a ${newRoll}`)
+  }
 
 ### Task 2c - Exit Ticket
 
@@ -97,6 +111,16 @@ addSix(21); // returns 27
 ```
 
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
+
+In my research I found that the following pros and cons of each type of programming
+
+Functional:
+Pros - language and structure flexibility, accurate and fast code writing, can make your code shorter and cleaner
+cons - can impact perfomance due to recursion, can't mutate existing data within the function
+
+Object oriented: 
+Pros - can allow or parallel developement and allow multiple people to work independently using modular classes once they are defined, modular classes are reusable, makes it easier to keep track of and update data
+Cons - can lead to bloated code, can cause duplication
 
 ## Resources
 

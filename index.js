@@ -27,10 +27,14 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ * In counter1 the variable is within the scope of the function, in counter2 it is global. 
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ * counter1 uses closure. I can tell because the variable count falls down into the function within.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * counter1 would be preferable when we need to nest together more than one function, or need to call upon them as a group elsewhere in our code.
+ * counter2 would be preferable in a situation that we might need to call upon the count variable elsewhere in the code.
  *
 */
 
@@ -55,12 +59,14 @@ function counter2() {
 /* Task 2: inning() 
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
+let points;
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  points = Math.floor((Math.random() * 3) + 1);
+  return points;
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -75,12 +81,20 @@ finalScore(inning, 9) might return:
 }
 
 */ 
-
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+let teamScores = {
+  home: 0,
+  away: 0
 }
+
+function finalScore(inning, num){
+  for (i = 0; i < num; i++){
+  teamScores.home = teamScores.home + inning();
+  teamScores.away = teamScores.away + inning();
+}
+  return teamScores
+}
+
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -102,9 +116,29 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+let inningScore = {
+  away: 0,
+  home: 0
 }
 
+let totals = {
+  away: 0,
+  home: 0
+}
 
+function getInningScore(inning){
+  inningScore.home =  inning();
+  inningScore.away =  inning();
+  return inningScore;
+}
+
+function scoreboard(innNum) {
+  for(i = 0; i < innNum; i++){
+    getInningScore(inning);
+    totals.home = totals.home + inning();
+    totals.away = totals.away + inning();
+    console.log(`Inning ${i + 1}: ${inningScore.away} - ${inningScore.home}`);
+  }
+  console.log(`Final Score: ${totals.away} - ${totals.home}`);
+}
+scoreboard(9);
